@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: {{ .Values.prometheus.kind }}
+metadata:
+  name: {{ .Values.prometheus.name }}
+  {{- with .Values.prometheus.labels }}
+  labels:
+    {{- toYaml .  | nindent 4 }}
+  {{- end}}
+  namespace: {{ .Values.global.namespace }}
+spec:
+  replicas: {{ .Values.prometheus.replica }}
+  serviceName: {{ .Values.prometheus.service.name }}
+  selector:
+    {{- with .Values.prometheus.labels }}
+    matchLabels:
+      {{- toYaml . | nindent 6 }}
+    {{- end}}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.prometheus.labels }}
+      labels:
+        {{- toYaml . | nindent 8 }}
+      {{- end}}
+    spec:
+      serviceAccountName: {{ .Values.prometheus.serviceAccountName }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Values.prometheus.name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: {{ .Values.prometheus.image}}
+          imagePullPolicy: {{ .Values.global.image.pullPolicy }}
+          volumeMounts:
+            - name: prometheus-config
+              mountPath: /etc/prometheus/prometheus.yml
+              subPath: prometheus.yml
+          ports:
+            - containerPort: 9090
+      volumes:
+        - name: prometheus-config
+          configMap:
+            name: {{ .Values.prometheus.configMap.name }}    
+#        volumeMounts:
+#          - name: {{ .Values.prometheus.volumeMounts.name }}
+#            mountPath: {{ .Values.prometheus.volumeMounts.mountPath }}
+#            subPath: {{ .Values.prometheus.volumeMounts.subPath }}
+#     volumes:
+#        - name: {{ .Values.prometheus.volume.name }}
+#          configMap:
+#            name: {{ .Values.prometheus.configMap.name}}
+
+

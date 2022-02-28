@@ -1,0 +1,29 @@
+prometheus:
+  name: prometheus 
+  replica: 1
+  kind: StatefulSet
+  image: prom/prometheus
+  serviceAccountName: prometheus 
+  labels:
+    component: collector
+    name: prometheus
+  volumeMounts:
+    name: prometheus-config-volume
+    mountPath: /etc/prometheus/prometheus.yml
+    subPath: prometheus.yml
+  volume: 
+    name: prometheus-config-volume
+  configMap:
+    name: prometheus-config
+  ClusterRole:
+    name: prometheus
+  ClusterRoleBinding:
+    name: prometheus
+  port: 
+    name: prometheus
+    number: 9090
+  service:
+    name: prometheus
+    type: ClusterIP
+    port: 9090
+  

@@ -18,7 +18,7 @@
       }
     ]
   },
-  "description": "This dashboard is one of major topic for Kubernetes Book \nand best optimized for virtual machine environment provided with \nhttps://github.com/sysnet4admin/_Book_k8sInfra\n\nNotice: It may be running on the other environment but cannot be guaranteed.",
+  "description": "Dashboard with source from \nhttps://github.com/sysnet4admin/_Book_k8sInfra\n\nNotice:  Has been configured to  work for some diffrerent use cases. ",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "gnetId": 13770,
@@ -2855,7 +2855,7 @@
     ]
   },
   "timezone": "",
-  "title": "Main Dashboard",
+  "title": "Kubernetes Workload Dashboard",
   "uid": "4b545447f",
   "version": 1,
   "weekStart": ""

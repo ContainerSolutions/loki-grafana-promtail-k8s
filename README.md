@@ -35,7 +35,7 @@ Prometheus is highly customizable and its config file can be altered for a optim
 Data is Visualized via Grafana and a provisioned community dashboard as shown below:
 
 
-![Grafana Dashboard](https://photos.google.com/share/AF1QipPsXMn0o3agiVE3p4mpiAeNctQSrQ5WS1vInwxPcajVOeMwDEhbGvNrZJcFKgqNqg/photo/AF1QipNBBdZqdCjY7MNd0GcRq9mfSUYB9JAPU4Va53yz?key=WVN3bXVoaXhIME5PWnY2blNTOGtWNTJGZ29oM2lB)
+![Grafana Dashboard](https://lh3.googleusercontent.com/pw/AM-JKLV7rJW_0QcJ-_yPBeg3be_9yrxRVa53UYSxse1174vxEZFfCYZATKW1EG7R7XOWfYVF1z2vbYHbjWAhMDJoN9aDO9PNJY_X9TTThw-yscqBW4npG2D9NlrqY08vwaz017TvCjYyZxv4Tt7pLxb13WmZNw=w2551-h1364-no?authuser=0)
 
 
 
@@ -43,4 +43,4 @@ Data is Visualized via Grafana and a provisioned community dashboard as shown be
 Loki is a lightweight log aggregation system and integrates natively with the rest of the prometheus-grafana stack and a wide range of data sources. Monitoring-stack incorporates loki and data from a promtail daemonset.
 
 sharing
-![Loki Logs](https://photos.google.com/share/AF1QipPsXMn0o3agiVE3p4mpiAeNctQSrQ5WS1vInwxPcajVOeMwDEhbGvNrZJcFKgqNqg/photo/AF1QipPA81xSMHyImPPdTc46ArVkTCcsVVqyctpVD2lC?key=WVN3bXVoaXhIME5PWnY2blNTOGtWNTJGZ29oM2lB)
+![Loki Logs](https://lh3.googleusercontent.com/pw/AM-JKLXtcucSa_967m_MGXXINdxSrhLZ0LLV1Wcgv21UVQvLmJfgGm0WIDrKIPJ38kgyh9hdwXop1iglS0SUW8UXqs1FPhEM6H5qYlSTvCpJjRirI9VXLLn2slTB4of7sJfu3YEXHTX9YLF42LDqoF9iJrnqFA=w2554-h1375-no?authuser=0)

@@ -42,5 +42,5 @@ Data is Visualized via Grafana and a provisioned community dashboard as shown be
 ##  Logging: 
 Loki is a lightweight log aggregation system and integrates natively with the rest of the prometheus-grafana stack and a wide range of data sources. Monitoring-stack incorporates loki and data from a promtail daemonset.
 
-sharing
+
 ![Loki Logs](https://lh3.googleusercontent.com/pw/AM-JKLXtcucSa_967m_MGXXINdxSrhLZ0LLV1Wcgv21UVQvLmJfgGm0WIDrKIPJ38kgyh9hdwXop1iglS0SUW8UXqs1FPhEM6H5qYlSTvCpJjRirI9VXLLn2slTB4of7sJfu3YEXHTX9YLF42LDqoF9iJrnqFA=w2554-h1375-no?authuser=0)

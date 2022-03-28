@@ -13,5 +13,5 @@ metadata:
 provisioner: kubernetes.io/{{ .Values.global.pv.provisioner}}
 parameters:
   type: io1
-  iopsPerGB: "2"
+  iopsPerGB: "10"
   fsType: ext4

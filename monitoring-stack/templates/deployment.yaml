@@ -44,6 +44,11 @@ spec:
           - name: dashboard
 #            mountPath: /usr/share/grafana/public/dashboards
             mountPath: /etc/grafana/provisioning/dashboards
+          {{- if .Values.env.aws.enabled }}
+          - name: credential
+            mountPath: /usr/share/grafana/.aws/
+#            subPath: credentials
+          {{- end }}            
 
       volumes:
         - name: datasource
@@ -60,6 +65,18 @@ spec:
                 path: dashboard.json
               - key: dashboard
                 path: dashboard.yml
+        - name: credential
+          configMap:
+            name: {{ .Values.grafana.configmap.name}}
+            items:
+              {{- if .Values.env.aws.enabled }}
+              - key: credentials
+                path: credentials 
+              {{- end }}
+        - name: {{ .Values.grafana.sc.name}}
+          persistentVolumeClaim:
+            claimName: {{ .Values.grafana.pvc.name}}
+              
             
  #         livenessProbe:
  #           httpGet:

@@ -42,7 +42,7 @@ spec:
           ports:
             - containerPort: 9090
       volumes:
-        - name: prometheus-config
+        - name: {{ .Values.prometheus.volume.name}}
           configMap:
             name: {{ .Values.prometheus.configMap.name }}    
 #        volumeMounts:

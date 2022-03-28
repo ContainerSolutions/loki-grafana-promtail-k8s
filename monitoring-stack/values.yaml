@@ -3,6 +3,11 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
+env:
+  azure: "false" #set to "true" for azure cluster deployment
+  aws:
+    enabled: true   
+
 namespace: monitoring 
 global:
   namespace: monitoring
@@ -75,10 +80,15 @@ grafana:
   containerSecurityContext:
     allowPrivilegeEscalation: false
   ports:
-    name: grafanaport
+    name: grafana-port
     port: 3000
   service:
     type: NodePort
     port: 31500
     name: grafana
+  pvc:
+    name: grafana
+    size: 2Gi
+  sc:
+    name: grafana  
 

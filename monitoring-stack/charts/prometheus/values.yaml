@@ -8,11 +8,11 @@ prometheus:
     component: collector
     name: prometheus
   volumeMounts:
-    name: prometheus-config-volume
+    name: prometheus-config
     mountPath: /etc/prometheus/prometheus.yml
     subPath: prometheus.yml
   volume: 
-    name: prometheus-config-volume
+    name: prometheus-config
   configMap:
     name: prometheus-config
   ClusterRole:

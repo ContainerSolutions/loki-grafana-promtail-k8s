@@ -14,7 +14,7 @@ global:
   image:
     pullPolicy: IfNotPresent
   pv:
-    provisioner: kubernetes.io/aws-ebs
+    provisioner: aws-ebs
 
 image:
   pullPolicy: IfNotPresent

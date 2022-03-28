@@ -13,6 +13,8 @@ global:
   namespace: monitoring
   image:
     pullPolicy: IfNotPresent
+  pv:
+    provisioner: kubernetes.io/aws-ebs
 
 image:
   pullPolicy: IfNotPresent

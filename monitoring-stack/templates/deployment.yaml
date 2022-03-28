@@ -51,6 +51,9 @@ spec:
           {{- end }}            
 
       volumes:
+        - name: {{ .Values.grafana.sc.name}}
+          readOnly: false
+          mountPath: /var/lib/grafana
         - name: datasource
           configMap:
             name: {{ .Values.grafana.configmap.name}}

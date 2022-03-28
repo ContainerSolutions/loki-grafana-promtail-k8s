@@ -12,6 +12,6 @@ metadata:
 #provisioner: kubernetes.io/aws-ebs
 provisioner: kubernetes.io/{{ .Values.global.pv.provisioner}}
 parameters:
-  type: io1
-  iopsPerGB: "10"
+  type: gp2
+#  iopsPerGB: "10"
   fsType: ext4

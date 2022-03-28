@@ -76,9 +76,9 @@ spec:
               - key: credentials
                 path: credentials 
               {{- end }}
-        - name: {{ .Values.grafana.sc.name}}
+        - name: {{ .Values.grafana.sc.name }}
           persistentVolumeClaim:
-            claimName: {{ .Values.grafana.pvc.name}}
+            claimName: {{ .Values.grafana.pvc.name }}
               
             
  #         livenessProbe:

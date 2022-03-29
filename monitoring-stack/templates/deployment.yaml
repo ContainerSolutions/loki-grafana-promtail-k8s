@@ -30,8 +30,6 @@ spec:
         {{- toYaml .Values.grafana.SecurityContext | nindent 8 }}
       containers:
         - name: {{ .Values.grafana.name }}
-          securityContext:
-            {{- toYaml .Values.grafana.containerSecurityContext | nindent 12 }}
           image: {{ .Values.grafana.image }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:

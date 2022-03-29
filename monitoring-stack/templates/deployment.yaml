@@ -47,11 +47,11 @@ spec:
           - name: dashboard
 #            mountPath: /usr/share/grafana/public/dashboards
             mountPath: /etc/grafana/provisioning/dashboards
-          {{- if .Values.env.aws.enabled }}
-          - name: credential
-            mountPath: /usr/share/grafana/.aws/
+#          {{- if .Values.env.aws.enabled }}
+#          - name: credential
+#            mountPath: /usr/share/grafana/.aws/
 #            subPath: credentials
-          {{- end }}            
+#          {{- end }}            
 
       volumes:
         - name: datasource

@@ -80,6 +80,7 @@ grafana:
     name: grafana
   securityContext:
     runAsUser: 474
+    fsGroup: 472
     runAsNonRoot: true
   containerSecurityContext:
     allowPrivilegeEscalation: false

@@ -79,9 +79,11 @@ grafana:
   volume: 
     name: grafana
   securityContext:
-    runAsUser: 474
+  #  runAsUser: 474
     fsGroup: 472
-    runAsNonRoot: true
+    supplementalGroups:
+     - 0
+  #  runAsNonRoot: true
   containerSecurityContext:
     allowPrivilegeEscalation: false
   ports:

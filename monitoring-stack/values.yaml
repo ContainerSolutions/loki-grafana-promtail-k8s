@@ -4,6 +4,8 @@
 
 replicaCount: 1
 env:
+  local: 
+    enabled: false 
   azure: "false" #set to "true" for azure cluster deployment
   aws:
     enabled: true   

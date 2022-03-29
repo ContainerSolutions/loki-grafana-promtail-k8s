@@ -5,28 +5,28 @@
 #provisioner: kubernetes.io/no-provisioner
 #volumeBindingMode: WaitForFirstConsumer
 
+#apiVersion: storage.k8s.io/v1
+#kind: StorageClass
+#metadata:
+#  name: {{ .Values.grafana.sc.name}}
+#provisioner: kubernetes.io/aws-ebs
+#provisioner: kubernetes.io/{{ .Values.global.pv.provisioner}}
+#parameters:
+#  type: gp2
+#  iopsPerGB: "10"
+#  fsType: ext4
+#volumeBindingMode: WaitForFirstConsumer
+#allowVolumeExpansion: true
+
+
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: {{ .Values.grafana.sc.name}}
-  namespace: monitoring
-#provisioner: kubernetes.io/aws-ebs
-provisioner: kubernetes.io/{{ .Values.global.pv.provisioner}}
+{{- if .Values.env.aws.enabled }}
+provisioner: kubernetes.io/aws-ebs
 parameters:
   type: gp2
-#  iopsPerGB: "10"
-#  fsType: ext4
 volumeBindingMode: WaitForFirstConsumer
 allowVolumeExpansion: true
-
-
-#apiVersion: storage.k8s.io/v1
-#kind: StorageClass
-#metadata:
-#  name: grafana-storage
-#  namespace: monitoring
-#provisioner: kubernetes.io/aws-ebs
-#parameters:
-#  type: gp2
-#volumeBindingMode: WaitForFirstConsumer
-#allowVolumeExpansion: true
+{{- end }}

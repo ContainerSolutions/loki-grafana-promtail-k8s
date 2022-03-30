@@ -33,7 +33,8 @@ spec:
       containers:
         - name: {{ .Values.grafana.name }}
           image: {{ .Values.grafana.image }}
-#          command: ['sh', '-c', 'chown -R 472:472 /var/lib/grafana']
+          securityContext:
+            allowPrivilegeEscalation: false            
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: {{ .Values.grafana.ports.name }}
@@ -45,7 +46,6 @@ spec:
           - name: datasource
             mountPath: /etc/grafana/provisioning/datasources
           - name: dashboard
-#            mountPath: /usr/share/grafana/public/dashboards
             mountPath: /etc/grafana/provisioning/dashboards
 #          {{- if .Values.env.aws.enabled }}
 #          - name: credential

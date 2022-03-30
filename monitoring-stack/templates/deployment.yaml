@@ -27,11 +27,14 @@ spec:
       {{- end}}
     spec:
       securityContext:
-        {{- toYaml .Values.grafana.SecurityContext | nindent 8 }}
+        fsGroup: 472
+        supplementalGroups:
+          - 0
+#        {{- toYaml .Values.grafana.SecurityContext | nindent 8 }}
       containers:
         - name: {{ .Values.grafana.name }}
           image: {{ .Values.grafana.image }}
-          command: ['sh', '-c', 'chown -R 472:472 /var/lib/grafana']
+#          command: ['sh', '-c', 'chown -R 472:472 /var/lib/grafana']
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: {{ .Values.grafana.ports.name }}

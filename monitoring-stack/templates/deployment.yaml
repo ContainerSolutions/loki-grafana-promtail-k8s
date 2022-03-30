@@ -80,7 +80,7 @@ spec:
           persistentVolumeClaim:
             claimName: {{ .Values.grafana.pvc.name }}
 
-#        {{- toYaml .Values.grafana.SecurityContext | nindent 8 }}
+
               
             
  #         livenessProbe:

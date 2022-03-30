@@ -1,3 +1,4 @@
+{{- if eq .Values.env.local false }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -10,3 +11,4 @@ spec:
   resources:
     requests:
       storage: {{ .Values.grafana.pvc.size}}
+{{- end}}

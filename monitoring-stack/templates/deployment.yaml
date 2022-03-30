@@ -28,6 +28,7 @@ spec:
     spec:
       securityContext:
         fsGroup: 472
+        runAsUser: 472
         supplementalGroups:
           - 0
       containers:
@@ -41,13 +42,15 @@ spec:
               containerPort: {{ .Values.grafana.ports.port }}
               protocol: TCP
           volumeMounts:
+          {{- if eq .Values.env.local false }}
           - name: {{ .Values.grafana.sc.name}}
             mountPath: /var/lib/grafana
+          {{- end }}
           - name: datasource
             mountPath: /etc/grafana/provisioning/datasources
           - name: dashboard
             mountPath: /etc/grafana/provisioning/dashboards
-#          {{- if .Values.env.aws.enabled }}
+#          {{- if .Values.env.aws }}
 #          - name: credential
 #            mountPath: /usr/share/grafana/.aws/
 #            subPath: credentials
@@ -72,13 +75,15 @@ spec:
           configMap:
             name: {{ .Values.grafana.configmap.name}}
             items:
-              {{- if .Values.env.aws.enabled }}
+              {{- if eq .Values.env.aws true }}
               - key: credentials
                 path: credentials 
               {{- end }}
+        {{- if eq .Values.env.local false }}
         - name: {{ .Values.grafana.sc.name }}
           persistentVolumeClaim:
             claimName: {{ .Values.grafana.pvc.name }}
+        {{- end }}
 
 
               

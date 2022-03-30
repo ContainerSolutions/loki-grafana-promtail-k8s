@@ -12,7 +12,7 @@ data:
 {{ .Files.Get "home.json" | indent 4}}
   dashboard: |-
 {{ .Files.Get "dashboard.yml" | indent 4 }}
-#{{- if .Values.env.aws.enabled }}
+#{{- if .Values.env.aws }}
 #  credentials: |-
 #{{ .Files.Get "aws_cred" | indent 4 }}
 #{{- end }}

@@ -80,10 +80,10 @@ grafana:
     name: grafana
   securityContext:
     runAsUser: 472
-    runAsGroup: 472
+    runAsGroup: 0
     fsGroup: 472
-    supplementalGroups:
-     - 0
+  #  supplementalGroups:
+  #   - 0
   #  runAsNonRoot: true
   containerSecurityContext:
     allowPrivilegeEscalation: false

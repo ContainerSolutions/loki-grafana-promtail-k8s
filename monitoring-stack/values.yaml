@@ -8,7 +8,7 @@ env:
     enabled: false 
   azure: "false" #set to "true" for azure cluster deployment
   aws:
-    enabled: true   
+    enabled: false   
 
 namespace: monitoring 
 global:
@@ -41,12 +41,7 @@ podSecurityContext: {}
   # fsGroup: 2000
 
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+
 
 service:
   type: ClusterIP
@@ -78,15 +73,6 @@ grafana:
     name: grafana
   volume: 
     name: grafana
-  securityContext:
-    runAsUser: 472
-    runAsGroup: 472
-    fsGroup: 472
-  #  supplementalGroups:
-  #   - 0
-  #  runAsNonRoot: true
-  containerSecurityContext:
-    allowPrivilegeEscalation: false
   ports:
     name: grafana-port
     port: 3000

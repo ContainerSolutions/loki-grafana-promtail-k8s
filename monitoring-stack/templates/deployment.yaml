@@ -30,7 +30,6 @@ spec:
         fsGroup: 472
         supplementalGroups:
           - 0
-#        {{- toYaml .Values.grafana.SecurityContext | nindent 8 }}
       containers:
         - name: {{ .Values.grafana.name }}
           image: {{ .Values.grafana.image }}
@@ -80,6 +79,8 @@ spec:
         - name: {{ .Values.grafana.sc.name }}
           persistentVolumeClaim:
             claimName: {{ .Values.grafana.pvc.name }}
+
+#        {{- toYaml .Values.grafana.SecurityContext | nindent 8 }}
               
             
  #         livenessProbe:

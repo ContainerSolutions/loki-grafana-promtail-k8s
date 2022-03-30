@@ -31,6 +31,7 @@ spec:
       containers:
         - name: {{ .Values.grafana.name }}
           image: {{ .Values.grafana.image }}
+          command: ['sh', '-c', 'chown -R 472:472 /var/lib/grafana']
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: {{ .Values.grafana.ports.name }}

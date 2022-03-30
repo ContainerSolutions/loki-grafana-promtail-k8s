@@ -64,7 +64,7 @@ affinity: {}
 
 
 grafana: 
-  image: grafana/grafana
+  image: grafana/grafana:8.4.4
   #:7.5.6
   name: grafana
   labels: 
@@ -79,11 +79,11 @@ grafana:
   volume: 
     name: grafana
   securityContext:
-    runAsUser: 472
-    runAsGroup: 0
+  #  runAsUser: 472
+  #  runAsGroup: 0
     fsGroup: 472
-  #  supplementalGroups:
-  #   - 0
+    supplementalGroups:
+     - 0
   #  runAsNonRoot: true
   containerSecurityContext:
     allowPrivilegeEscalation: false

@@ -6,13 +6,21 @@ replicaCount: 1
 env:
   local: false 
   azure: false #set to "true" for azure cluster deployment
-  aws: false   
+  aws: false 
 
-namespace: monitoring 
+networking:
+  ingress: false
+  nodePort: true   
+
+metrics:
+  present: true 
+
 global:
   namespace: monitoring
   image:
     pullPolicy: IfNotPresent
+  metrics:
+    present: true 
   pv:
     provisioner: aws-ebs
 

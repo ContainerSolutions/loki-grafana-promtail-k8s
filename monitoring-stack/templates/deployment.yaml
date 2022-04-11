@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.grafana.name}}
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.global.namespace }}
   {{- with .Values.grafana.labels }}
   labels:
     {{- toYaml . | nindent 4 }}

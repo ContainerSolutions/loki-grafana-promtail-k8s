@@ -23,8 +23,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 13770,
   "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1646005198564,
+  "iteration": 1648637905354,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -92,7 +91,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "targets": [
         {
           "datasource": {
@@ -168,7 +167,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "targets": [
         {
           "datasource": {
@@ -236,7 +235,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "targets": [
         {
           "expr": "sum(round(increase(kube_pod_container_status_restarts_total{pod=\"$pod\"}[10m])))",
@@ -346,7 +345,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "targets": [
         {
           "expr": "sum((container_memory_working_set_bytes{pod=\"$pod\"})/2)",
@@ -438,7 +437,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "targets": [
         {
           "expr": "sum(kube_pod_container_resource_limits_cpu_cores{pod=\"$pod\"})",
@@ -510,7 +509,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -662,7 +661,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -771,7 +770,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "pointradius": 10,
       "points": false,
       "renderer": "flot",
@@ -880,7 +879,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "pointradius": 10,
       "points": false,
       "renderer": "flot",
@@ -987,7 +986,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -2666,7 +2665,7 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 34,
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [
     "kubernetes",
@@ -2751,8 +2750,8 @@
       {
         "current": {
           "selected": false,
-          "text": "10.1.1.124:9100",
-          "value": "10.1.1.124:9100"
+          "text": "10.1.2.21:9100",
+          "value": "10.1.2.21:9100"
         },
         "datasource": {
           "type": "prometheus",
@@ -2779,7 +2778,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "monitoring",
           "value": "monitoring"
         },
@@ -2809,8 +2808,8 @@
       {
         "current": {
           "selected": false,
-          "text": "node-exporter-mfwsv",
-          "value": "node-exporter-mfwsv"
+          "text": "node-exporter-l98vf",
+          "value": "node-exporter-l98vf"
         },
         "datasource": {
           "type": "prometheus",

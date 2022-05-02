@@ -2,13 +2,13 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Values.grafana.pvc.name }}
+  name: {{ .Values.prometheus.pvc.name }}
   namespace: {{ .Values.global.namespace }}
 spec:
-  storageClassName: {{ .Values.grafana.sc.name}}
+  storageClassName: {{ .Values.prometheus.sc.name}}
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: {{ .Values.grafana.pvc.size}}
+      storage: {{ .Values.prometheus.pvc.size }}
 {{- end}}

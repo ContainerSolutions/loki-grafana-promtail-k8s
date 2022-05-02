@@ -3,10 +3,7 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-env:
-  local: false 
-  azure: false #set to "true" for azure cluster deployment
-  aws: false 
+
 
 networking:
   ingress: false
@@ -16,6 +13,10 @@ metrics:
   present: true 
 
 global:
+  env:
+    local: false 
+    azure: false #set to "true" for azure cluster deployment
+    aws: false 
   namespace: monitoring
   image:
     pullPolicy: IfNotPresent
@@ -23,6 +24,7 @@ global:
     present: true 
   pv:
     provisioner: aws-ebs
+
 
 image:
   pullPolicy: IfNotPresent

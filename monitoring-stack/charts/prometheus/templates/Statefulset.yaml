@@ -31,27 +31,52 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Values.prometheus.name }}
+          args:
+            - --config.file=/etc/prometheus/prometheus.yml
+            - --storage.tsdb.retention.time=30d
+            - --storage.tsdb.path=/data
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: {{ .Values.prometheus.image}}
           imagePullPolicy: {{ .Values.global.image.pullPolicy }}
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: {{ .Values.prometheus.port.number }}
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 2
+          livenessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: {{ .Values.prometheus.port.number }}
+            timeoutSeconds: 1  
           volumeMounts:
-            - name: prometheus-config
+            - name: {{ .Values.prometheus.volume.config }}
               mountPath: /etc/prometheus/prometheus.yml
               subPath: prometheus.yml
+            - name: {{ .Values.prometheus.volume.data }}
+              mountPath: /data
           ports:
-            - containerPort: 9090
+            - containerPort: {{ .Values.prometheus.port.number }}
       volumes:
-        - name: {{ .Values.prometheus.volume.name}}
+        - name: {{ .Values.prometheus.volume.config }}
           configMap:
             name: {{ .Values.prometheus.configMap.name }}    
-#        volumeMounts:
-#          - name: {{ .Values.prometheus.volumeMounts.name }}
-#            mountPath: {{ .Values.prometheus.volumeMounts.mountPath }}
-#            subPath: {{ .Values.prometheus.volumeMounts.subPath }}
-#     volumes:
-#        - name: {{ .Values.prometheus.volume.name }}
-#          configMap:
-#            name: {{ .Values.prometheus.configMap.name}}
+        - name: {{ .Values.prometheus.volume.data }}
+        {{- if eq .Values.global.env.local true }}
+          emptyDir: {}
+        {{- end }}
+        {{- if eq .Values.global.env.aws true }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.prometheus.pvc.name }}
+        {{- end }}
+
 
 

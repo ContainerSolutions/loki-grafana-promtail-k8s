@@ -12,7 +12,8 @@ prometheus:
     mountPath: /etc/prometheus/prometheus.yml
     subPath: prometheus.yml
   volume: 
-    name: prometheus-config
+    config: prometheus-config
+    data: prometheus-data
   configMap:
     name: prometheus-config
   ClusterRole:
@@ -26,4 +27,8 @@ prometheus:
     name: prometheus
     type: ClusterIP
     port: 9090
-  
+  sc:
+    name: prometheus 
+  pvc:
+    name: prometheus 
+    size: 5Gi

@@ -9,8 +9,6 @@ networking:
   ingress: false
   nodePort: true   
 
-metrics:
-  present: true 
 
 global:
   env:

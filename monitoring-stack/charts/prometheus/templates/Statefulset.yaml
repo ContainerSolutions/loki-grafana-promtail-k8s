@@ -40,15 +40,15 @@ spec:
           image: {{ .Values.prometheus.image}}
           imagePullPolicy: {{ .Values.global.image.pullPolicy }}
           readinessProbe:
-            failureThreshold: 3
+            failureThreshold: 5
             httpGet:
               path: /
               port: {{ .Values.prometheus.port.number }}
               scheme: HTTP
-            initialDelaySeconds: 10
-            periodSeconds: 30
+            initialDelaySeconds: 30
+            periodSeconds: 10
             successThreshold: 1
-            timeoutSeconds: 2
+            timeoutSeconds: 5
           livenessProbe:
             failureThreshold: 3
             initialDelaySeconds: 30
@@ -56,7 +56,7 @@ spec:
             successThreshold: 1
             tcpSocket:
               port: {{ .Values.prometheus.port.number }}
-            timeoutSeconds: 1  
+            timeoutSeconds: 5  
           volumeMounts:
             - name: {{ .Values.prometheus.volume.config }}
               mountPath: /etc/prometheus/prometheus.yml
@@ -73,7 +73,7 @@ spec:
         {{- if eq .Values.global.env.local true }}
           emptyDir: {}
         {{- end }}
-        {{- if eq .Values.global.env.aws true }}
+        {{- if eq .Values.global.env.local false }}
           persistentVolumeClaim:
             claimName: {{ .Values.prometheus.pvc.name }}
         {{- end }}

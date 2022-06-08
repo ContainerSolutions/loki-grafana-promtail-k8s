@@ -23,7 +23,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 13770,
   "graphTooltip": 0,
-  "iteration": 1648637905354,
+  "iteration": 1654690334324,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -120,9 +120,15 @@
             {
               "options": {
                 "0": {
+                  "index": 1,
                   "text": "Good"
                 },
                 "1": {
+                  "index": 0,
+                  "text": "Bad"
+                },
+                "2": {
+                  "index": 2,
                   "text": "Bad"
                 }
               },
@@ -2664,7 +2670,7 @@
       "type": "row"
     }
   ],
-  "refresh": "5s",
+  "refresh": "10s",
   "schemaVersion": 35,
   "style": "dark",
   "tags": [
@@ -2749,9 +2755,10 @@
       },
       {
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "10.1.2.21:9100",
-          "value": "10.1.2.21:9100"
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -2808,8 +2815,8 @@
       {
         "current": {
           "selected": false,
-          "text": "node-exporter-l98vf",
-          "value": "node-exporter-l98vf"
+          "text": "node-exporter-vcmxc",
+          "value": "node-exporter-vcmxc"
         },
         "datasource": {
           "type": "prometheus",
@@ -2837,7 +2844,7 @@
     ]
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {

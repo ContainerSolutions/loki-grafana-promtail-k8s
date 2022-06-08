@@ -4,7 +4,7 @@
 
 **Components**: Grafana, Prometheus, Loki, Node Exporter, Promtail
 
-Monitoring stack is a simple solution helm-based solution to get started with monitoring k8s workloads and components as well as collect and centralized logs for easy query
+Monitoring stack is a simple helm-based solution to get started with monitoring k8s workloads and components as well as collect and centralized logs for easy query
 
 Monitoring-stack is an out of the box solution that has a provisioned dashboard and is easily extensible to add more components.
 

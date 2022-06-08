@@ -57,9 +57,13 @@ Grafana nodeport can be altered in the values.yaml file if need be.
 
 To **delete** monitoring-stack,
 
+
   
 
-helm uninstall < Release name >
+    helm uninstall < Release name >
+  
+
+
 
   
 

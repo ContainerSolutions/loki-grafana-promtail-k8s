@@ -6,7 +6,9 @@ nodeExporter:
     app: node-exporter
     name: node-exporter
   podAnnotations:
-    prometheus.io/scrape: "true"    
+    prometheus.io/scrape: "true"  
+    prometheus.io/path: '/metrics'
+    prometheus.io/port: "9100" 
   kind: DaemonSet
   securityContext:
     privileged: true
@@ -45,3 +47,9 @@ nodeExporter:
     type: ClusterIP
     port: 9100
     name: node-exporter
+  limits:
+    cpu: 100m
+    memory: 100Mi
+  requests:
+    cpu: 50m
+    memory: 50Mi

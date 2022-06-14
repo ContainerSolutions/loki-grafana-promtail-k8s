@@ -6,6 +6,7 @@ dependencies:
   - name: "promtail"
   - name: "node-exporter"
   - name: "prometheus"
+  - name: "blackbox-exporter"
 
 type: application
 

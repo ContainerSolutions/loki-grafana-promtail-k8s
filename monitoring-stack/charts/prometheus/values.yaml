@@ -2,7 +2,7 @@ prometheus:
   name: prometheus 
   replica: 1
   kind: StatefulSet
-  image: prom/prometheus
+  image: prom/prometheus:main
   serviceAccountName: prometheus 
   labels:
     component: collector
@@ -17,9 +17,9 @@ prometheus:
   configMap:
     name: prometheus-config
   ClusterRole:
-    name: prometheus
+    name: prometheus-cr
   ClusterRoleBinding:
-    name: prometheus
+    name: prometheus-crb
   port: 
     name: prometheus
     number: 9090

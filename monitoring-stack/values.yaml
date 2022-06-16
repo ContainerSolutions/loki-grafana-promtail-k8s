@@ -1,20 +1,11 @@
 # Default values for monitoring-stack.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-
-replicaCount: 1
-
-
-networking:
-  ingress: false
-  nodePort: true   
-
-
 global:
   env:
-    local: false 
-    azure: false #set to "true" for azure cluster deployment
-    aws: false 
+    local: false #Set to "true" for general deployments
+    azure: false #Set to "true" for azure cluster deployments
+    aws: false   #Set to "true" for aws cluster deployments
   namespace: monitoring
   image:
     pullPolicy: IfNotPresent
@@ -24,49 +15,9 @@ global:
     provisioner: aws-ebs
 
 
-image:
-  pullPolicy: IfNotPresent
-
-
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
-
-serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-  # Annotations to add to the service account
-  annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
-
-podAnnotations: {}
-
-podSecurityContext: {}
-  # fsGroup: 2000
-
-securityContext: {}
-
-
-service:
-  type: ClusterIP
-  port: 80
-
-
-
-resources: {}
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
-
 
 grafana: 
   image: grafana/grafana:8.4.4
-  #:7.5.6
   name: grafana
   labels: 
     app: grafana

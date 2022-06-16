@@ -36,7 +36,7 @@ spec:
           image: {{ .Values.grafana.image }}
           securityContext:
             allowPrivilegeEscalation: false            
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.global.image.pullPolicy }}
           ports:
             - name: {{ .Values.grafana.ports.name }}
               containerPort: {{ .Values.grafana.ports.port }}

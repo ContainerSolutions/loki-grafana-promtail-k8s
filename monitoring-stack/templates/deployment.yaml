@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.grafana.name}}
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.global.namespace }}
   {{- with .Values.grafana.labels }}
   labels:
     {{- toYaml . | nindent 4 }}
@@ -27,23 +27,52 @@ spec:
       {{- end}}
     spec:
       securityContext:
-        {{- toYaml .Values.grafana.SecurityContext | nindent 8 }}
+        fsGroup: 472
+        runAsUser: 472
+        supplementalGroups:
+          - 0
       containers:
         - name: {{ .Values.grafana.name }}
-          securityContext:
-            {{- toYaml .Values.grafana.containerSecurityContext | nindent 12 }}
           image: {{ .Values.grafana.image }}
+          securityContext:
+            allowPrivilegeEscalation: false            
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: {{ .Values.grafana.ports.name }}
               containerPort: {{ .Values.grafana.ports.port }}
               protocol: TCP
           volumeMounts:
+          {{- if eq .Values.global.env.local false }}
+          - name: {{ .Values.grafana.sc.name}}
+            mountPath: /var/lib/grafana
+          {{- end }}
           - name: datasource
             mountPath: /etc/grafana/provisioning/datasources
           - name: dashboard
-#            mountPath: /usr/share/grafana/public/dashboards
             mountPath: /etc/grafana/provisioning/dashboards
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /robots.txt
+              port: {{ .Values.grafana.ports.port }}
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 2
+          livenessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: {{ .Values.grafana.ports.port }}
+            timeoutSeconds: 1  
+#          {{- if .Values.global.env.aws }}
+#          - name: credential
+#            mountPath: /usr/share/grafana/.aws/
+#            subPath: credentials
+#          {{- end }}            
 
       volumes:
         - name: datasource
@@ -60,6 +89,23 @@ spec:
                 path: dashboard.json
               - key: dashboard
                 path: dashboard.yml
+#        - name: credential
+#          configMap:
+#            name: {{ .Values.grafana.configmap.name}}
+##            items:
+#              {{- if eq .Values.global.env.aws true }}
+#              - key: credentials
+#                path: credentials 
+#              {{- end }}
+        {{- if eq .Values.global.env.local false }}
+        - name: {{ .Values.grafana.sc.name }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.grafana.pvc.name }}
+        {{- end }}
+
+
+
+              
             
  #         livenessProbe:
  #           httpGet:

@@ -1,0 +1,17 @@
+blackbox:
+  kind: Deployment 
+  replica: 1
+  name: blackbox
+  image: prom/blackbox-exporter:master
+  labels: 
+    app: blackbox-exporter
+    role: component 
+  port:
+    name: blackbox 
+    number: 9115
+  podAnnotations:
+    app.kubernetes.io/managed-by: Helm
+  service:
+    name: blackbox 
+    type: ClusterIP 
+    port: 9115 

@@ -1,0 +1,14 @@
+
+{{- if eq .Values.global.env.local false }}
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: {{ .Values.grafana.sc.name}}
+{{- if eq .Values.global.env.aws true }}
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true
+{{- end }}
+{{- end }}

@@ -1,0 +1,14 @@
+{{- if eq .Values.global.env.local false }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.prometheus.pvc.name }}
+  namespace: {{ .Values.global.namespace }}
+spec:
+  storageClassName: {{ .Values.prometheus.sc.name}}
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.prometheus.pvc.size }}
+{{- end}}

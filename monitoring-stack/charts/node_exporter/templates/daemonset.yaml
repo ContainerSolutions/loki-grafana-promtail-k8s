@@ -29,3 +29,10 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: {{ .Values.nodeExporter.image }}
+          resources:
+            limits:
+              cpu: {{ .Values.nodeExporter.limits.cpu }}
+              memory: {{ .Values.nodeExporter.limits.memory }}
+            requests:
+              cpu: {{ .Values.nodeExporter.requests.cpu }}
+              memory: {{ .Values.nodeExporter.requests.memory }}

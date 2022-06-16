@@ -23,8 +23,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 13770,
   "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1646005198564,
+  "iteration": 1654690334324,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -92,7 +91,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "targets": [
         {
           "datasource": {
@@ -121,9 +120,15 @@
             {
               "options": {
                 "0": {
+                  "index": 1,
                   "text": "Good"
                 },
                 "1": {
+                  "index": 0,
+                  "text": "Bad"
+                },
+                "2": {
+                  "index": 2,
                   "text": "Bad"
                 }
               },
@@ -168,7 +173,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "targets": [
         {
           "datasource": {
@@ -236,7 +241,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "targets": [
         {
           "expr": "sum(round(increase(kube_pod_container_status_restarts_total{pod=\"$pod\"}[10m])))",
@@ -346,7 +351,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "targets": [
         {
           "expr": "sum((container_memory_working_set_bytes{pod=\"$pod\"})/2)",
@@ -438,7 +443,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "targets": [
         {
           "expr": "sum(kube_pod_container_resource_limits_cpu_cores{pod=\"$pod\"})",
@@ -510,7 +515,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -662,7 +667,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -771,7 +776,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "pointradius": 10,
       "points": false,
       "renderer": "flot",
@@ -880,7 +885,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "pointradius": 10,
       "points": false,
       "renderer": "flot",
@@ -987,7 +992,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.4.4",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -2665,8 +2670,8 @@
       "type": "row"
     }
   ],
-  "refresh": "5s",
-  "schemaVersion": 34,
+  "refresh": "10s",
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [
     "kubernetes",
@@ -2750,9 +2755,10 @@
       },
       {
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "10.1.1.124:9100",
-          "value": "10.1.1.124:9100"
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -2779,7 +2785,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "monitoring",
           "value": "monitoring"
         },
@@ -2809,8 +2815,8 @@
       {
         "current": {
           "selected": false,
-          "text": "node-exporter-mfwsv",
-          "value": "node-exporter-mfwsv"
+          "text": "node-exporter-vcmxc",
+          "value": "node-exporter-vcmxc"
         },
         "datasource": {
           "type": "prometheus",
@@ -2838,7 +2844,7 @@
     ]
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {

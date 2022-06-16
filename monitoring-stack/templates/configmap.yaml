@@ -12,4 +12,4 @@ data:
 {{ .Files.Get "home.json" | indent 4}}
   dashboard: |-
 {{ .Files.Get "dashboard.yml" | indent 4 }}
-  
+

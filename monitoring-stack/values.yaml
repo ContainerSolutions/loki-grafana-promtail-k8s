@@ -6,6 +6,8 @@ global:
     local: false #Set to "true" for general deployments
     azure: false #Set to "true" for azure cluster deployments
     aws: false   #Set to "true" for aws cluster deployments
+#  istio_present: false
+#  ingress_controller: false  
   namespace: monitoring
   image:
     pullPolicy: IfNotPresent

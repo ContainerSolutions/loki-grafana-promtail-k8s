@@ -39,6 +39,13 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: {{ .Values.prometheus.image}}
           imagePullPolicy: {{ .Values.global.image.pullPolicy }}
+          resources:
+            requests:
+              memory: "200Mi" {{ .Values.prometheus.resources.requests.memory }}
+              cpu: {{ .Values.prometheus.resources.requests.cpu }}
+            limits:
+              memory: {{ .Values.prometheus.resources.limits.memory }}
+              cpu: {{ .Values.prometheus.resources.limits.cpu }}
           readinessProbe:
             failureThreshold: 5
             httpGet:

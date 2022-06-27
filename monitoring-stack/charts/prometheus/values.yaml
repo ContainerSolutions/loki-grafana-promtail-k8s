@@ -29,6 +29,13 @@ prometheus:
     port: 9090
   sc:
     name: prometheus 
+  resources:
+    requests:
+      cpu:
+      memory:
+    limits:
+      cpu:
+      memory:
   pvc:
     name: prometheus 
     size: 5Gi

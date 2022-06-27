@@ -24,13 +24,11 @@ spec:
       {{- with .Values.loki.labels }}
       labels:
         {{- toYaml . | nindent 8 }}
-      {{- end}}
-      
+      {{- end}}      
       annotations:
         prometheus.io/port: http-metrics
         prometheus.io/scrape: "true"
     spec:
-#      serviceAccountName: prometheus 
       securityContext:
         fsGroup: 10001
         runAsGroup: 10001

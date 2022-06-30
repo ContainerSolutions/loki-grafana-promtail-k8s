@@ -41,7 +41,7 @@ spec:
           imagePullPolicy: {{ .Values.global.image.pullPolicy }}
           resources:
             requests:
-              memory: "200Mi" {{ .Values.prometheus.resources.requests.memory }}
+              memory:  {{ .Values.prometheus.resources.requests.memory }}
               cpu: {{ .Values.prometheus.resources.requests.cpu }}
             limits:
               memory: {{ .Values.prometheus.resources.limits.memory }}
